@@ -1,5 +1,6 @@
 import graphene
 from graphene import relay
+from graphene.types.json import JSONString
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 from models import db_session, Department as DepartmentModel, Employee as EmployeeModel
 
@@ -17,8 +18,11 @@ class Employee(SQLAlchemyObjectType):
 
 
 class CreateEmployee(graphene.Mutation):
+
     class Arguments:
         name = graphene.String()
+        hobbies = JSONString()
+        results = JSONString()
         department_id = graphene.Int()
 
     ok = graphene.Boolean()
@@ -26,7 +30,10 @@ class CreateEmployee(graphene.Mutation):
 
     @classmethod
     def mutate(cls, _, info, **args):
-        employee = EmployeeModel(name=args.get('name'), department_id=args.get('department_id'))
+        employee = EmployeeModel(name=args.get('name'),
+                                 hobbies=args.get('hobbies'),
+                                 results=args.get('results'),
+                                 department_id=args.get('department_id'))
         db_session.add(employee)
         db_session.commit()
         ok = True
@@ -34,8 +41,11 @@ class CreateEmployee(graphene.Mutation):
 
 
 class UpdateEmployee(graphene.Mutation):
+
     class Arguments:
         name = graphene.String()
+        hobbies = JSONString()
+        results = JSONString()
         department_id = graphene.Int()
 
     ok = graphene.Boolean()
@@ -45,11 +55,10 @@ class UpdateEmployee(graphene.Mutation):
     def mutate(cls, _, info, **args):
         query = Employee.get_query(info)
 
-        name = args.get('name')
-        department_id = args.get('department_id')
-
-        employee = query.filter(EmployeeModel.name == name).first()
-        employee.department_id = department_id
+        employee = query.filter(EmployeeModel.name == args.get('name')).first()
+        employee.department_id = args.get('department_id')
+        employee.hobbies = args.get('hobbies')
+        employee.results = args.get('results')
         db_session.commit()
         ok = True
 
@@ -70,5 +79,6 @@ class Query(graphene.ObjectType):
 class MyMutations(graphene.ObjectType):
     create_employee = CreateEmployee.Field()
     update_employee = UpdateEmployee.Field()
+
 
 schema = graphene.Schema(query=Query, mutation=MyMutations, types=[Department, Employee])

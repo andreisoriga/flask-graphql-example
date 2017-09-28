@@ -1,7 +1,8 @@
-from sqlalchemy import *
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, func, ForeignKey
 from sqlalchemy.orm import (scoped_session, sessionmaker, relationship,
                             backref)
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy_utils import JSONType
 
 engine = create_engine('sqlite:///database.sqlite3', convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
@@ -26,6 +27,8 @@ class Employee(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    hobbies = Column(JSONType)
+    results = Column(JSONType)
     hired_on = Column(DateTime, default=func.now())
 
     department_id = Column(Integer, ForeignKey('department.id'))

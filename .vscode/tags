@@ -1,0 +1,64 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Arguments	../schema.py	/^    class Arguments:$/;"	kind:class	line:20
+Arguments	../schema.py	/^    class Arguments:$/;"	kind:class	line:37
+Base	../models.py	/^Base = declarative_base()$/;"	kind:variable	line:11
+CreateEmployee	../schema.py	/^class CreateEmployee(graphene.Mutation):$/;"	kind:class	line:19
+Department	../models.py	/^class Department(Base):$/;"	kind:class	line:17
+Department	../schema.py	/^class Department(SQLAlchemyObjectType):$/;"	kind:class	line:7
+Employee	../models.py	/^class Employee(Base):$/;"	kind:class	line:24
+Employee	../schema.py	/^class Employee(SQLAlchemyObjectType):$/;"	kind:class	line:13
+Meta	../schema.py	/^    class Meta:$/;"	kind:class	line:14
+Meta	../schema.py	/^    class Meta:$/;"	kind:class	line:8
+MyMutations	../schema.py	/^class MyMutations(graphene.ObjectType):$/;"	kind:class	line:70
+Query	../schema.py	/^class Query(graphene.ObjectType):$/;"	kind:class	line:59
+UpdateEmployee	../schema.py	/^class UpdateEmployee(graphene.Mutation):$/;"	kind:class	line:36
+__tablename__	../models.py	/^    __tablename__ = 'department'$/;"	kind:variable	line:18
+__tablename__	../models.py	/^    __tablename__ = 'employee'$/;"	kind:variable	line:25
+app	../server.py	/^app = Flask(__name__)$/;"	kind:variable	line:8
+autoflush	../models.py	/^                                         autoflush=False,$/;"	kind:variable	line:8
+backref	../models.py	/^        backref=backref('employees',$/;"	kind:variable	line:35
+bind	../models.py	/^                                         bind=engine))$/;"	kind:variable	line:9
+cascade	../models.py	/^                        cascade='delete,all'))$/;"	kind:variable	line:37
+create_data	../server.py	/^def create_data():$/;"	kind:function	line:22
+create_employee	../schema.py	/^    create_employee = CreateEmployee.Field()$/;"	kind:variable	line:71
+db_session	../models.py	/^db_session = scoped_session(sessionmaker(autocommit=False,$/;"	kind:variable	line:7
+department	../models.py	/^    department = relationship($/;"	kind:variable	line:33
+department_id	../models.py	/^    department_id = Column(Integer, ForeignKey('department.id'))$/;"	kind:variable	line:31
+department_id	../schema.py	/^        department_id = graphene.Int()$/;"	kind:variable	line:22
+department_id	../schema.py	/^        department_id = graphene.Int()$/;"	kind:variable	line:39
+departments	../schema.py	/^    departments = SQLAlchemyConnectionField(Department)$/;"	kind:variable	line:62
+employee	../schema.py	/^    employee = graphene.Field(Employee)$/;"	kind:variable	line:25
+employee	../schema.py	/^    employee = graphene.Field(Employee)$/;"	kind:variable	line:42
+employee	../schema.py	/^    employee = graphene.Field(Employee, name=graphene.String())$/;"	kind:variable	line:63
+employees	../schema.py	/^    employees = SQLAlchemyConnectionField(Employee)$/;"	kind:variable	line:61
+engine	../models.py	/^engine = create_engine('sqlite:\/\/\/database.sqlite3', convert_unicode=True)$/;"	kind:variable	line:6
+hired_on	../models.py	/^    hired_on = Column(DateTime, default=func.now())$/;"	kind:variable	line:29
+id	../models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:20
+id	../models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:27
+index	../server.py	/^def index():$/;"	kind:function	line:17
+interfaces	../schema.py	/^        interfaces = (relay.Node, )$/;"	kind:variable	line:10
+interfaces	../schema.py	/^        interfaces = (relay.Node, )$/;"	kind:variable	line:16
+model	../schema.py	/^        model = DepartmentModel$/;"	kind:variable	line:9
+model	../schema.py	/^        model = EmployeeModel$/;"	kind:variable	line:15
+models.py	../models.py	1;"	kind:file	line:1
+mutate	../schema.py	/^    def mutate(cls, _, info, **args):$/;"	kind:member	line:28
+mutate	../schema.py	/^    def mutate(cls, _, info, **args):$/;"	kind:member	line:45
+name	../models.py	/^    name = Column(String)$/;"	kind:variable	line:21
+name	../models.py	/^    name = Column(String)$/;"	kind:variable	line:28
+name	../schema.py	/^        name = graphene.String()$/;"	kind:variable	line:21
+name	../schema.py	/^        name = graphene.String()$/;"	kind:variable	line:38
+node	../schema.py	/^    node = relay.Node.Field()$/;"	kind:variable	line:60
+ok	../schema.py	/^    ok = graphene.Boolean()$/;"	kind:variable	line:24
+ok	../schema.py	/^    ok = graphene.Boolean()$/;"	kind:variable	line:41
+resolve_employee	../schema.py	/^    def resolve_employee(self, info, name):$/;"	kind:member	line:65
+schema	../schema.py	/^schema = graphene.Schema(query=Query, mutation=MyMutations, types=[Department, Employee])$/;"	kind:variable	line:74
+schema.py	../schema.py	1;"	kind:file	line:1
+server.py	../server.py	1;"	kind:file	line:1
+shutdown_session	../server.py	/^def shutdown_session(exception=None):$/;"	kind:function	line:46
+update_employee	../schema.py	/^    update_employee = UpdateEmployee.Field()$/;"	kind:variable	line:72
+uselist	../models.py	/^                        uselist=True,$/;"	kind:variable	line:36

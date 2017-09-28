@@ -27,11 +27,14 @@ def create_data():
     hr = Department(name='Human Resources')
     db_session.add(hr)
 
-    peter = Employee(name='Peter', department=engineering)
+    peter = Employee(name='Peter', department=engineering, hobbies="['pool', 'sitting down']",
+                     results="{'code': 'A+', 'team work': 'C'}")
     db_session.add(peter)
-    roy = Employee(name='Roy', department=engineering)
+    roy = Employee(name='Roy', department=engineering, hobbies="['football', 'mechanics']",
+                     results="{'code': 'B', 'team work': 'A'}")
     db_session.add(roy)
-    tracy = Employee(name='Tracy', department=hr)
+    tracy = Employee(name='Tracy', department=hr, hobbies="['smoking', 'guns']",
+                     results="{'code': 'A+', 'team work': 'B'}")
     db_session.add(tracy)
 
     db_session.commit()
@@ -45,6 +48,7 @@ app.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=sch
 @app.teardown_appcontext
 def shutdown_session(exception=None):
     db_session.remove()
+
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5001)

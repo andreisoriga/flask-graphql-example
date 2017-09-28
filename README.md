@@ -53,6 +53,17 @@ mutation {
     ok
   }
 }
+
+mutation {
+  createEmployee(name:"Andrei", hobbies:"\"['asdad', 'ddddd']\"", departmentId:1) {
+    employee {
+      id,
+      name
+      departmentId
+    }
+    ok
+  }
+}
 ```
 
 Update employee department_id:
